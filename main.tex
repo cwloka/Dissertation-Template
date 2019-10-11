@@ -1,0 +1,153 @@
+\documentclass[oneside, 11pt]{book}
+% article, IEEEtran, proc, minimal, report, book, slides, memoir, letter, beamer
+
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[labelfont=bf]{caption}
+\usepackage{listings}
+\usepackage[toc]{appendix}
+\usepackage{tocbibind} % includes the table of contents in the table of contents
+% \usepackage[nottoc]{tocbibind} % does not include the table of contents in the table of contents
+
+% from the CVPR style
+\usepackage{eso-pic}
+\usepackage{xspace}
+
+\usepackage{subcaption} % to allow subfigures within a larger float
+\usepackage{placeins} % for float barrier
+
+\usepackage{multirow} % table formatting
+
+\usepackage{xcolor} % for highlighting changes
+
+\usepackage{hanging}
+\usepackage{longtable}
+
+\setcounter{secnumdepth}{4} % make subsubsections have numbers
+
+% code listing formatting
+\lstset{
+  %numbers=left,
+  frame=single,
+  %frame=top,frame=bottom,
+  %captionpos=b,
+  %xleftmargin=17pt,
+  framexleftmargin=17pt,
+  framexrightmargin=17pt,
+  framexbottommargin=5pt,
+  %framextopmargin=5pt,
+  basicstyle=\linespread{1.0}\ttfamily\small,
+  escapeinside={(*}{*)},
+  breaklines=true,
+  breakindent=0.1em,
+  % postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}} % If you want line breaks in code to have red arrows or not
+}
+
+
+\usepackage{setspace}
+%\onehalfspacing
+\doublespacing
+
+\usepackage[breaklinks,hidelinks]{hyperref}
+
+\usepackage[margin=1in]{geometry}
+
+\pagestyle{plain}
+
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand\lstlistlistingname{List of Code Listings}
+
+\renewcommand{\lstlistoflistings}{\begingroup
+\tocfile{\lstlistlistingname}{lol}
+\endgroup}
+
+\newcommand\hlt[1]{\textcolor{red}{#1}} % custom command to turn text red to mark changes
+
+% Definition of macros (from CVPR template)
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\etal{\emph{et al}\onedot}
+\def\eg{\emph{e.g}\onedot}
+\def\ie{\emph{i.e}\onedot}
+\def\Eg{\emph{E.g}\onedot}
+\makeatother
+
+\lstnewenvironment{todo}[1][]{
+  \lstset{ %
+    basicstyle=\ttfamily#1\setstretch{1},
+    backgroundcolor=\color{orange},
+    postbreak=,
+  }
+}{}
+
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+\begin{document}
+
+\frontmatter
+
+\input{sec/front/title.tex}
+\input{sec/front/abstract.tex}
+\input{sec/front/acknowledgements.tex}
+\tableofcontents
+\listoftables
+\listoffigures
+\lstlistoflistings
+\input{sec/front/abbreviations.tex}
+
+\mainmatter
+
+\chapter{Introduction}
+\label{ch:Intro}
+
+\newpage
+
+\input{sec/intro/intro.tex}
+
+\chapter{Content Chapter}
+\label{ch:SomeLabel}
+
+  % statement of contribution and publications, if applicable
+  \singlespace
+  \emph{The work in this chapter has been published previously as the following:}
+
+  \vspace{4mm}
+  \hangpara{5mm}{1}
+    Dissertation Author, Author 2, Supervisor ``My awesome paper'', in \emph{Journal on my topic}, [Year]
+  \vspace{4mm}
+
+  \hangpara{-5mm}{-1}
+  \emph{and has been updated and extended here for the purposes of this document. Author 2 did [explain Author 2's contributions].}
+  \newpage
+  \doublespace
+
+% Then whatever input sections go here
+% \input{sec/chapter_name/chapter_text.tex}
+
+% Repeat for as many content chapters as you have
+
+\chapter{Conclusions and Future Directions}
+\label{ch:Conclusion}
+
+\newpage
+
+\input{sec/conc/conclusion.tex}
+
+\bibliography{bibliography}{}
+\bibliographystyle{ieeetr} % use whatever style your field prefers
+
+%\begin{appendices}
+%\chapter{Additional Implementation Details}\label{ch:appendix}
+%
+%\input{sec/appendix/appendixA.tex}
+%\end{appendices}
+
+\end{document}
